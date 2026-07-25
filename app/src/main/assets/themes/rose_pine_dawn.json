@@ -1,0 +1,30 @@
+{
+  "id": "rose_pine_dawn",
+  "name": "Rose Pine Dawn",
+  "dark": false,
+  "colors": {
+    "background": "#FAF4ED",
+    "surface": "#FFFAF3",
+    "surfaceVariant": "#F2E9E1",
+    "onBackground": "#575279",
+    "onSurfaceVariant": "#797593",
+    "outline": "#DFDAD9",
+    "primary": "#907AA9",
+    "onPrimary": "#FFFAF3",
+    "secondary": "#D7827E",
+    "onSecondary": "#FFFAF3",
+    "error": "#B4637A"
+  },
+  "syntax": {
+    "keyword": "#286983",
+    "string": "#EA9D34",
+    "number": "#D7827E",
+    "comment": "#9893A5",
+    "function": "#D7827E",
+    "type": "#56949F",
+    "operator": "#286983",
+    "variable": "#575279",
+    "constant": "#907AA9",
+    "punctuation": "#797593"
+  }
+}

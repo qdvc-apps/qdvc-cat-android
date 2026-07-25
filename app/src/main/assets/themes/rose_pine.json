@@ -1,0 +1,30 @@
+{
+  "id": "rose_pine",
+  "name": "Rose Pine",
+  "dark": true,
+  "colors": {
+    "background": "#191724",
+    "surface": "#1F1D2E",
+    "surfaceVariant": "#26233A",
+    "onBackground": "#E0DEF4",
+    "onSurfaceVariant": "#908CAA",
+    "outline": "#403D52",
+    "primary": "#C4A7E7",
+    "onPrimary": "#191724",
+    "secondary": "#EBBCBA",
+    "onSecondary": "#191724",
+    "error": "#EB6F92"
+  },
+  "syntax": {
+    "keyword": "#31748F",
+    "string": "#F6C177",
+    "number": "#EBBCBA",
+    "comment": "#6E6A86",
+    "function": "#EBBCBA",
+    "type": "#9CCFD8",
+    "operator": "#31748F",
+    "variable": "#E0DEF4",
+    "constant": "#C4A7E7",
+    "punctuation": "#908CAA"
+  }
+}

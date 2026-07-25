@@ -1,0 +1,30 @@
+{
+  "id": "regular_dark",
+  "name": "Regular Dark Mode",
+  "dark": true,
+  "colors": {
+    "background": "#181B21",
+    "surface": "#20242C",
+    "surfaceVariant": "#2A2F39",
+    "onBackground": "#E4E2DC",
+    "onSurfaceVariant": "#AAB0BB",
+    "outline": "#3A404B",
+    "primary": "#7FB4A0",
+    "onPrimary": "#000000",
+    "secondary": "#E6A277",
+    "onSecondary": "#000000",
+    "error": "#E5645A"
+  },
+  "syntax": {
+    "keyword": "#C792EA",
+    "string": "#7FB4A0",
+    "number": "#E6A277",
+    "comment": "#6B7280",
+    "function": "#82AAFF",
+    "type": "#5FC7B0",
+    "operator": "#E6A277",
+    "variable": "#E4E2DC",
+    "constant": "#F0925E",
+    "punctuation": "#AAB0BB"
+  }
+}
