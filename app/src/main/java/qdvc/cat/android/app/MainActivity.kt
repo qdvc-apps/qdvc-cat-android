@@ -12,6 +12,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import qdvc.cat.android.app.data.ThemeRepository
 import qdvc.cat.android.app.ui.AppViewModel
@@ -34,10 +35,17 @@ class MainActivity : ComponentActivity() {
             val settings by viewModel.settings.collectAsStateWithLifecycle()
             val screen by viewModel.screen.collectAsState()
             val doc by viewModel.doc.collectAsState()
+            val systemFonts by viewModel.systemFonts.collectAsState()
+            val customFont by viewModel.customFont.collectAsState()
 
             val context = this
             val lightTheme = ThemeRepository.lightOrDefault(context, settings.lightThemeId)
             val darkTheme = ThemeRepository.darkOrDefault(context, settings.darkThemeId)
+            // Resolve the chosen font id to a family; re-resolves when the id,
+            // the discovered system fonts, or the loaded custom font change.
+            val fontFamily = remember(settings.fontId, systemFonts, customFont) {
+                viewModel.fontFamilyFor(settings.fontId)
+            }
 
             QdvcCatTheme(
                 themeMode = settings.themeMode,
@@ -54,17 +62,24 @@ class MainActivity : ComponentActivity() {
                             doc = doc,
                             fontSizeSp = settings.fontSizeSp,
                             wordWrap = settings.wordWrap,
+                            fontFamily = fontFamily,
                             onOpenSettings = { viewModel.openScreen(Screen.SETTINGS) },
                         )
                         Screen.SETTINGS -> SettingsScreen(
                             settings = settings,
                             lightThemes = ThemeRepository.lightThemes(context),
                             darkThemes = ThemeRepository.darkThemes(context),
+                            systemFonts = systemFonts,
+                            customFont = customFont,
                             onThemeMode = viewModel::setThemeMode,
                             onLightTheme = viewModel::setLightTheme,
                             onDarkTheme = viewModel::setDarkTheme,
                             onFontSize = viewModel::setFontSize,
                             onWordWrap = viewModel::setWordWrap,
+                            onFontId = viewModel::setFontId,
+                            onSelectCustomFont = { viewModel.selectCustomFont() },
+                            onPickCustomVariant = viewModel::setCustomFontVariant,
+                            onClearCustomVariant = viewModel::clearCustomFontVariant,
                             onBack = { viewModel.openScreen(Screen.VIEWER) },
                         )
                     }

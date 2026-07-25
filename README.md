@@ -13,7 +13,9 @@ in a monospace font, with optional syntax highlighting for common formats.
 - **"Open with" integration** — QDVC Cat registers as a handler for text files,
   so it appears in your file browser's *Open with* menu.
 - **Settings** — light/dark mode (defaulting to whichever mode your OS is in),
-  a choice of colour themes, adjustable monospace text size, and word wrap.
+  a choice of colour themes, a font selection (built-in monospace, any device
+  font, or a custom font supplied as up to four `.ttf`/`.otf` style files),
+  adjustable text size, and word wrap.
 - **Colour themes** carried over from
   [`qdvc-markdown-notebook-android`](https://github.com/qdvc-apps/qdvc-markdown-notebook-android):
   Regular Light/Dark, Pure Black (OLED), Everforest Light/Dark, and Rosé Pine /

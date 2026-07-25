@@ -78,3 +78,35 @@ each theme's colour family.
 
 Drop a new `.json` into `assets/themes/`. It's picked up automatically and
 appears in the light or dark list according to its `dark` flag.
+
+## Fonts
+
+Adapted from `qdvc-markdown-notebook-android`'s font system (`SystemFonts`).
+The stored font id is one of: the default sentinel (`FontIds.DEFAULT` →
+built-in monospace), a device-font file path (discovered by scanning the system
+font directories), or the custom sentinel (`FontIds.CUSTOM`). A custom font is
+up to four user-supplied files — Regular / Italic / Bold / Bold-Italic — copied
+into the app's private storage at fixed paths and assembled into one
+`FontFamily`. `AppViewModel.fontFamilyFor` resolves the id to a `FontFamily`
+that `ViewerScreen` applies to the content text (line numbers stay monospace so
+the gutter width is predictable).
+
+## Viewer layout (scroll & gutter)
+
+`ViewerScreen` renders each line as a `Row` of `[gutter cell][content cell]`
+inside a `LazyColumn`, so only on-screen lines are laid out and tokenised.
+
+- **Whole-document horizontal scroll.** Every content cell shares ONE
+  `ScrollState` via `horizontalScroll`. Because all rows read the same scroll
+  offset, they move together and stay column-aligned — you can't get one line
+  shifted relative to another. The gutter cells never take the scroll modifier,
+  so the line-number panel stays fixed while the document scrolls sideways.
+- **Continuous gutter under word wrap.** When wrap is on, a logical line can
+  occupy several visual rows. The `Row` is sized with `IntrinsicSize.Min` and
+  the gutter `Box` uses `fillMaxHeight`, so the gutter background paints the
+  full height of the wrapped block and the panel runs unbroken down the side.
+  When wrap is off we skip the intrinsic pass — it isn't needed, and
+  `horizontalScroll` doesn't support intrinsic measurement, so mixing them
+  would crash.
+- **Gutter/text gap.** A 2 dp `GUTTER_TEXT_GAP` sits between the number panel
+  and the code.
